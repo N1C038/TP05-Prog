@@ -1,11 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
-<form action = '@Url.Action("IniciarSesion", "Home")' method = "POST" enctype="multipart/form-data">
-<div class="text-center">
-    <h1 class="display-4">Bienvenido a nuestra página, que desea hacer?</h1>
 
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a nuestra página, Registrese para poder así iniciar sesión</h1>
 </div>
-<div>
-<input type = "submit" value = "Iniciar Sesión"/> 
-</div>
+<form action = '@Url.Action("Login", "Home")' method = "POST" enctype="multipart/form-data">
+Nombre de Usuario: <input type = "text" name = "Nombre de Usuario">
+Contraseña:<input type = "password" name = "Contraseña">
+Nombre: <input type = "text" name = "Nombre">
+Apellido: <input type = "text" name = "Apellido">
+Tipo de Usuario: <select name = "Tipo de Usuario">
+    <option value = "Administrador">Alumno</option>
+    <option value = "Usuario">Docente</option>
+        <option value = "Administrador">Coordinador</option>
+    <option value = "Usuario">Padre</option>
+<input type = "submit" value = "Registrarse"> 
+</form>

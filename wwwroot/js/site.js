@@ -1,4 +1,19 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function CampoObligatorio(){
+    let Usuario = document.getElementById("");
+    let Contra = "Contraseña";
+    let nombre = "Nombre";
+    let apellido = "Apellido";
+    let tipo = "Tipo de Usuario";
+    if(Usuario = null && Contra == null && apellido == null && tipo == null){
+    
+    }
+}
+function LongitudMinima(){
 
-// Write your JavaScript code.
+}
+function CaracteresValidos(){
+
+}
+function ValidarCompletitud(){
+    
+}

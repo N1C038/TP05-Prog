@@ -67,7 +67,6 @@ Z:\Programacion\TP5\obj\Debug\net9.0\scopedcss\bundle\TP5.styles.css
 Z:\Programacion\TP5\obj\Debug\net9.0\scopedcss\projectbundle\TP5.bundle.scp.css
 Z:\Programacion\TP5\obj\Debug\net9.0\compressed\9k114w8wcn-b9sayid5wm.gz
 Z:\Programacion\TP5\obj\Debug\net9.0\compressed\sj9dmhhjyo-61n19gt1b8.gz
-Z:\Programacion\TP5\obj\Debug\net9.0\compressed\i5jgn18cal-xtxxf3hu2r.gz
 Z:\Programacion\TP5\obj\Debug\net9.0\compressed\jaje5nsmy9-bqjiyaj88i.gz
 Z:\Programacion\TP5\obj\Debug\net9.0\compressed\tljh96xcui-c2jlpeoesf.gz
 Z:\Programacion\TP5\obj\Debug\net9.0\compressed\xzbvxufhl0-erw9l3u2r3.gz
@@ -139,3 +138,5 @@ Z:\Programacion\TP5\obj\Debug\net9.0\refint\TP5.dll
 Z:\Programacion\TP5\obj\Debug\net9.0\TP5.pdb
 Z:\Programacion\TP5\obj\Debug\net9.0\TP5.genruntimeconfig.cache
 Z:\Programacion\TP5\obj\Debug\net9.0\ref\TP5.dll
+Z:\Programacion\TP5\obj\Debug\net9.0\TP5.sourcelink.json
+Z:\Programacion\TP5\obj\Debug\net9.0\compressed\i5jgn18cal-fsek1udfur.gz
