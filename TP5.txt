@@ -1,9 +1,9 @@
 Models:
 BD.cs:
-Registrar Usuarios ✅?
-Iniciar Sesión ✅?
-Mantener la sesión con Session ✅?
-Cerrar Sesión ✅?
+Registrar Usuarios ✅
+Iniciar Sesión ✅
+Mantener la sesión con Session ✅
+Cerrar Sesión ✅
 
 wwwroot:
 site.js:
@@ -26,4 +26,4 @@ Si se cierra sesión, se limpia la Session y se vuelve al index
 
 
 Que me queda:
-js, login, controller, sesión, index?
+login, controller, sesión, index?
