@@ -22,16 +22,18 @@ if(Contra.length < 8){
 }
 return mensaje;
 }
+//hacerlo a partir de https://docs.google.com/presentation/?usp=slides_web
 function CaracteresValidos(){
 let nombre = document.getElementById("Nombre").value;
 let apellido = document.getElementById("Apellido").value;
 let mensaje = "";
-let regex = /^[a-zA-Z]+$/;
-if(!regex.test(nombre)){
-    mensaje += "El nombre solo puede contener letras. ";
+let invalidos = "!@#$%^&*()_+[]{}|;':\",./<>?`~0123456789";
+
+if(nombre.includes(invalidos)){
+    mensaje += "El nombre no puede contener caracteres especiales. ";
 }
-if(!regex.test(apellido)){
-    mensaje += "El apellido solo puede contener letras. ";
+if(apellido.includes(invalidos)){
+    mensaje += "El apellido no puede contener caracteres especiales. ";
 }
 return mensaje;
 }
