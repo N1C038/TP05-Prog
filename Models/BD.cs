@@ -26,7 +26,7 @@ public static class BD
     }
     }
 
-    public static Usuario? IniciarSesion(string nombreUsuario, string contrasena)
+    public static Usuario IniciarSesion(string nombreUsuario, string contrasena)
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         {

@@ -48,7 +48,7 @@ public class HomeController : Controller
         ViewBag.Especialidad = BD.ObtenerEspecialidad(usuario.IDEspecialidad).Nombre;
         return View();
     }
-
+//Hecha con Copilot
     public IActionResult Login(Usuario usuario)
     {
         Usuario usuarioAutenticado = BD.IniciarSesion(usuario.NombreUsuario, usuario.Contraseña);

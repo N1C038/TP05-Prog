@@ -1,4 +1,5 @@
 namespace TP5.Models;
+//Hecha con Copilot
 public class Especialidad
 {
     public int ID { get; set; }

@@ -1,5 +1,5 @@
 namespace TP5.Models;
-
+//Hecha con Copilot
 public class Usuario
 {
     public string NombreUsuario { get; set; }
