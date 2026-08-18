@@ -7,4 +7,5 @@ public class Usuario
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public string TipoUsuario { get; set; }
+    public int IDEspecialidad {get; set;}
 }

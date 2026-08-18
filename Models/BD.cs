@@ -12,15 +12,16 @@ public static class BD
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         {
-        const string sql = @"INSERT INTO Usuario (NombreUsuario, Contraseña, Nombre, Apellido, TipoUsuario)
-                             VALUES (@NombreUsuario, @Contrasena, @Nombre, @Apellido, @TipoUsuario)";
+        const string sql = @"INSERT INTO Usuario (NombreUsuario, Contraseña, Nombre, Apellido, TipoUsuario, IDEspecialidad)
+                             VALUES (@NombreUsuario, @Contraseña, @Nombre, @Apellido, @TipoUsuario, @IDEspecialidad)";
         var affected = connection.Execute(sql, new
         {
             usuario.NombreUsuario,
-            Contrasena = usuario.Contrasena,
+            usuario.Contraseña,
             usuario.Nombre,
             usuario.Apellido,
-            usuario.TipoUsuario
+            usuario.TipoUsuario,
+            usuario.IDEspecialidad
         });
         return affected > 0;
     }
@@ -31,8 +32,8 @@ public static class BD
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         {
-        const string sql = "SELECT NombreUsuario AS NombreUsuario, Contraseña AS Contrasena, Nombre, Apellido, TipoUsuario FROM Usuario WHERE NombreUsuario = @NombreUsuario AND Contraseña = @Contrasena";
-        return connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario, Contrasena = contrasena });
+        const string sql = "SELECT NombreUsuario AS NombreUsuario, Contraseña AS Contraseña, Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario AND Contraseña = @Contraseña";
+        return connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario, Contraseña = contrasena });
         }
     }
 
