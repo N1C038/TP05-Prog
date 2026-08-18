@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index(Usuario usuario)
     {
-        if (BD.ExisteUsuario(usuario.nombreUsuario))
+        if (BD.ExisteUsuario(usuario.NombreUsuario) == true)
         {
             ViewBag.Error = "El nombre de usuario ya existe.";
             return View("Registro");
@@ -30,32 +30,32 @@ public class HomeController : Controller
 
     public IActionResult Bienvenida()
    {
-        string nombreUsuario = HttpContext.Session.GetString("nombreUsuario");
-        if (nombreUsuario == null)
+        string NombreUsuario = HttpContext.Session.GetString("nombreUsuario");
+        if (NombreUsuario == null)
         {
             return RedirectToAction("Index");
         }
-        Usuario usuario = BD.ObtenerUsuario(nombreUsuario);
+        Usuario usuario = BD.ObtenerUsuario(NombreUsuario);
         if (usuario == null)
         {
             return RedirectToAction("Index");
         }
-        ViewBag.Usuario = Usuario.NombreUsuario;
-        ViewBag.Nombre = Usuario.Nombre;
-        ViewBag.Apellido = Usuario.Apellido;
-        ViewBag.TipoUsuario = Usuario.TipoUsuario;
-        ViewBag.IDEspecialidad = Usuario.IDEspecialidad;
+        ViewBag.Usuario = usuario.NombreUsuario;
+        ViewBag.Nombre = usuario.Nombre;
+        ViewBag.Apellido = usuario.Apellido;
+        ViewBag.TipoUsuario = usuario.TipoUsuario;
+        ViewBag.IDEspecialidad = usuario.IDEspecialidad;
         ViewBag.Especialidad = BD.ObtenerEspecialidad(usuario.IDEspecialidad).Nombre;
         return View();
     }
 
-    public IActionResult Login()
+    public IActionResult Login(Usuario usuario)
     {
-        Usuario usuario = BD.Login(nombreUsuario, contraseña);
+        Usuario usuarioAutenticado = BD.IniciarSesion(usuario.NombreUsuario, usuario.Contraseña);
 
-        if (usuario != null)
+        if (usuarioAutenticado != null)
         {
-            HttpContext.Session.SetString("nombreUsuario", usuario.nombreUsuario);
+            HttpContext.Session.SetString("nombreUsuario", usuarioAutenticado.NombreUsuario);
             return RedirectToAction("Bienvenida");
         }
         else
@@ -64,7 +64,7 @@ public class HomeController : Controller
             return View("Index");    
         }
     }
-    
+
     public IActionResult CerrarSesion()
     {
         HttpContext.Session.Clear();

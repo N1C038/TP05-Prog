@@ -30,7 +30,7 @@ public static class BD
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         {
-        const string sql = "SELECT NombreUsuario AS NombreUsuario, Contraseña AS Contraseña, Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario AND Contraseña = @Contraseña";
+        const string sql = "SELECT NombreUsuario, Contraseña, Usuario.Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario AND Contraseña = @Contraseña";
         return connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario, Contraseña = contrasena });
         }
     }
@@ -50,7 +50,15 @@ public static class BD
         return connection.QuerySingleOrDefault<Especialidad>(sql, new { ID = idEspecialidad });
     }
 
-    public static Usuario ExisteUsuario(string nombreUsuario)
+    public static bool ExisteUsuario(string nombreUsuario)
+    {
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        const string sql = "SELECT NombreUsuario, Contraseña, Usuario.Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario";
+        var usuario = connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario });
+        return usuario != null;
+    }
+
+    public static Usuario ObtenerUsuario(string nombreUsuario)
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         const string sql = "SELECT NombreUsuario, Contraseña, Usuario.Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario";
