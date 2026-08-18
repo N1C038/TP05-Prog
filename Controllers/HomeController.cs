@@ -13,11 +13,18 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(Usuario usuario)
     {
-        //validar credenciales contra la base de datos
-        Usuario usuario = new Usuario();
-        
+        if (BD.ExisteUsuario(usuario.nombreUsuario))
+        {
+            ViewBag.Error = "El nombre de usuario ya existe.";
+            return View("Registro");
+        }
+        else
+        {
+            BD.RegistrarUsuario(usuario);
+            return RedirectToAction("Index");
+        }
         return View();
     }
 
@@ -44,10 +51,20 @@ public class HomeController : Controller
 
     public IActionResult Login()
     {
-        RedirectToAction("Login", "Home");
-        return View();
-    }
+        Usuario usuario = BD.Login(nombreUsuario, contraseña);
 
+        if (usuario != null)
+        {
+            HttpContext.Session.SetString("nombreUsuario", usuario.nombreUsuario);
+            return RedirectToAction("Bienvenida");
+        }
+        else
+        {
+            ViewBag.Error = "El usuario o la contraseña son incorrectos.";
+            return View("Index");    
+        }
+    }
+    
     public IActionResult CerrarSesion()
     {
         HttpContext.Session.Clear();
@@ -65,3 +82,4 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
+

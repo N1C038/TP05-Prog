@@ -1,5 +1,4 @@
 namespace TP5.Models;
-
 public class Especialidad
 {
     public int ID { get; set; }

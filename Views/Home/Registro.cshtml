@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Registro";
+}
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a nuestra página, Registrese para poder así iniciar sesión</h1>
+</div>
+<form action = "@Url.Action("Registro", "Home")" onsubmit method = "post">
+Nombre de Usuario: <input type = "text" name = "Nombre de Usuario" required>
+Contraseña:<input type = "password" name = "Contraseña" required>
+Nombre: <input type = "text" name = "Nombre" required>
+Apellido: <input type = "text" name = "Apellido" required>
+Tipo de Usuario: <select name = "Tipo de Usuario" required>
+    <option value = "Administrador">Alumno</option>
+    <option value = "Usuario">Docente</option>
+        <option value = "Administrador">Coordinador</option>
+    <option value = "Usuario">Padre</option>
+<input type = "submit" value = "Registrarse"> 
+</form>

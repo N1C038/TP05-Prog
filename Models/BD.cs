@@ -50,4 +50,10 @@ public static class BD
         return connection.QuerySingleOrDefault<Especialidad>(sql, new { ID = idEspecialidad });
     }
 
+    public static Usuario ExisteUsuario(string nombreUsuario)
+    {
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        const string sql = "SELECT NombreUsuario, Contraseña, Usuario.Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario";
+        return connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario });
+    }
 }
