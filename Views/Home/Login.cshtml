@@ -2,7 +2,7 @@
     ViewData["Title"] = "Login";
 }
 <h1> Bienvenido a la pagina de login, inicie sesion </h1>
-
-<input type = "text" name = "Nombre de Usuario">
-<input type = "password" name = "Contraseña">
+<form method="post" action="@Url.Action("Login", "Home")" >
+<input type = "text" name = "Nombre de Usuario" required>
+<input type = "password" name = "Contraseña" required>
 <input type = "submit" value = "Iniciar Sesión"/> 
