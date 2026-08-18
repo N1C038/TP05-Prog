@@ -7,7 +7,6 @@ public static class BD
 {
     private static string _connectionString = @"Server=localhost;Database=BaseRegistro;Integrated Security=True;TrustServerCertificate=true;";
 
-    // Registers a new user. Returns true if insert affected rows.
     public static bool RegistrarUsuario(Usuario usuario)
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
@@ -27,7 +26,6 @@ public static class BD
     }
     }
 
-    // Returns the user if credentials match, otherwise null.
     public static Usuario? IniciarSesion(string nombreUsuario, string contrasena)
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
@@ -37,7 +35,6 @@ public static class BD
         }
     }
 
-    // Deletes a user by username (if that's intended). Returns true if row deleted.
     public static bool CerrarSesionEliminarUsuario(string nombreUsuario)
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
@@ -45,4 +42,12 @@ public static class BD
         var affected = connection.Execute(sql, new { NombreUsuario = nombreUsuario });
         return affected > 0;
     }
+
+    public static Especialidad ObtenerEspecialidad(int idEspecialidad)
+    {
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        const string sql = "SELECT Especialidad.ID,  Especialidad.Nombre, Especialidad.Descripcion  FROM Especialidad WHERE Especialidad.ID = @ID";
+        return connection.QuerySingleOrDefault<Especialidad>(sql, new { ID = idEspecialidad });
+    }
+
 }

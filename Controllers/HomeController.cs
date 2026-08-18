@@ -22,8 +22,23 @@ public class HomeController : Controller
     }
 
     public IActionResult Bienvenida()
-    {
-        RedirectToAction("Bienvenida", "Home");
+   {
+        string nombreUsuario = HttpContext.Session.GetString("nombreUsuario");
+        if (nombreUsuario == null)
+        {
+            return RedirectToAction("Index");
+        }
+        Usuario usuario = BD.ObtenerUsuario(nombreUsuario);
+        if (usuario == null)
+        {
+            return RedirectToAction("Index");
+        }
+        ViewBag.Usuario = Usuario.NombreUsuario;
+        ViewBag.Nombre = Usuario.Nombre;
+        ViewBag.Apellido = Usuario.Apellido;
+        ViewBag.TipoUsuario = Usuario.TipoUsuario;
+        ViewBag.IDEspecialidad = Usuario.IDEspecialidad;
+        ViewBag.Especialidad = BD.ObtenerEspecialidad(usuario.IDEspecialidad).Nombre;
         return View();
     }
 
