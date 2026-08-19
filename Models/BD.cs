@@ -54,7 +54,7 @@ public static class BD
     {
         using SqlConnection connection = new SqlConnection(_connectionString);
         const string sql = "SELECT NombreUsuario, Contraseña, Usuario.Nombre, Apellido, TipoUsuario, IDEspecialidad FROM Usuario WHERE NombreUsuario = @NombreUsuario";
-        var usuario = connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario });
+        var us = connection.QuerySingleOrDefault<Usuario>(sql, new { NombreUsuario = nombreUsuario });
         return usuario != null;
     }
 
